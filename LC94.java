@@ -59,7 +59,7 @@ class Solution94 {
         ArrayList<Integer> res = new ArrayList<>();
         TreeNode cur = null;
         while (root != null) {
-            if(root.left != null) {
+            if (root.left != null) {
                 cur = root.left;
                 while (cur.right != null && cur.right != root) {
                     cur = cur.right;
@@ -73,7 +73,7 @@ class Solution94 {
                     root = root.right;
 
                 }
-            }else{
+            } else {
                 res.add(root.val);
                 root = root.right;
             }
@@ -81,6 +81,5 @@ class Solution94 {
         }
         return res;
     }
-
 }
 
