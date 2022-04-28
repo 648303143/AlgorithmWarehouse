@@ -12,6 +12,17 @@ import java.util.Iterator;
  */
 public class LC136 {
 }
+
+//异或
+class Solution136 {
+    public int singleNumber(int[] nums) {
+        int res = 0;
+        for (int num : nums){
+            res = res ^ num;
+        }
+        return res;
+    }
+}
 //时间复杂度 O（n） 空间复杂度 O（n）
 //class Solution {
 //    public int singleNumber(int[] nums) {
@@ -32,14 +43,3 @@ public class LC136 {
 //        return nums[0];
 //    }
 //}
-
-//异或
-class Solution136 {
-    public int singleNumber(int[] nums) {
-        int res = 0;
-        for (int num : nums){
-            res = res ^ num;
-        }
-        return res;
-    }
-}
