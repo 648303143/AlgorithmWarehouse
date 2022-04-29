@@ -6,20 +6,19 @@ import java.util.Arrays;
 
 /**
  * @author zhangqingyang02
- * @date 2022-04-28-16:10
+ * @date 2022-04-29-10:30
  */
-public class Select implements ISort{
+public class Insert implements ISort{
     @Override
     public void sort(int[] arr) {
-        if (arr==null || arr.length < 2) {
+        if (arr == null || arr.length < 2) {
             return;
         }
+
         for (int i = 0; i < arr.length; i++) {
-            int min = i;
-            for (int j = i+1; j < arr.length; j++) {
-                min = arr[min] < arr[j] ? min : j;
+            for (int j = i; j > 0 && arr[j] < arr[j - 1]; j--) {
+                swap(arr, j - 1, j);
             }
-            swap(arr, i, min);
         }
     }
 
@@ -29,4 +28,8 @@ public class Select implements ISort{
         arr[j] = temp;
     }
 
+    public static void main(String[] args) {
+        Checker.check(new Insert());
+    }
 }
+
