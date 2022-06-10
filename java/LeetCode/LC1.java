@@ -1,6 +1,8 @@
 package LeetCode;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author zzzZqy
@@ -16,7 +18,6 @@ public class LC1 {
     public static void main(String[] args) {
         Solution1 solution = new Solution1();
         int[] nums = new int[]{3,2,4};
-
         System.out.println(solution.twoSum(nums,6));
     }
 }
