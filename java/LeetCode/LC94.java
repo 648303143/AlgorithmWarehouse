@@ -52,7 +52,7 @@ class Solution94 {
 //    }
 
     /**
-     * 方式三 ： 马拉车
+     * 方式三 ： 莫里斯
      */
     public List<Integer> inorderTraversal(TreeNode root) {
         ArrayList<Integer> res = new ArrayList<>();
