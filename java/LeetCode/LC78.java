@@ -1,9 +1,6 @@
 package LeetCode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -18,24 +15,44 @@ public class LC78 {
     }
 }
 class Solution78 {
+
     public List<List<Integer>> subsets(int[] nums) {
-        ArrayList<Integer> ans = new ArrayList<>();
-        HashSet<List<Integer>> res = new HashSet<>(3);
-        process(nums,0,ans,res);
-        return new ArrayList<>(res);
+        List<List<Integer>> res = new ArrayList<>();
+        LinkedList<Integer> track = new LinkedList<>();
+
+        backtrack(res, track, 0, nums);
+        return res;
     }
 
-    public void process(int[] nums, int cur, List<Integer> ans, HashSet<List<Integer>> res){
-        if (cur >= nums.length) {
-            ArrayList<Integer> answer = new ArrayList<>(ans);
-            res.add(answer);
-            return;
+    public void backtrack(List<List<Integer>> res, LinkedList<Integer> track, int cur, int[] nums) {
+
+        res.add(new ArrayList(track));
+
+        for(int i = cur; i < nums.length; i++) {
+            track.addLast(nums[i]);
+            backtrack(res, track, i+1, nums);
+            track.removeLast();
         }
-        ans.add(nums[cur]);
-        process(nums,cur+1,ans,res);
-        ans.remove(ans.size()-1);
-
-        process(nums,cur+1,ans,res);
-
     }
+
+//    public List<List<Integer>> subsets(int[] nums) {
+//        ArrayList<Integer> ans = new ArrayList<>();
+//        HashSet<List<Integer>> res = new HashSet<>(3);
+//        process(nums,0,ans,res);
+//        return new ArrayList<>(res);
+//    }
+//
+//    public void process(int[] nums, int cur, List<Integer> ans, HashSet<List<Integer>> res){
+//        if (cur >= nums.length) {
+//            ArrayList<Integer> answer = new ArrayList<>(ans);
+//            res.add(answer);
+//            return;
+//        }
+//        ans.add(nums[cur]);
+//        process(nums,cur+1,ans,res);
+//        ans.remove(ans.size()-1);
+//
+//        process(nums,cur+1,ans,res);
+//
+//    }
 }
