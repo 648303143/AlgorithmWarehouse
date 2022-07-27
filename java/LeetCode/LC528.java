@@ -2,6 +2,7 @@ package LeetCode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.PriorityQueue;
 import java.util.Random;
 
 /**
@@ -14,26 +15,35 @@ public class LC528 {
 
 class Solution528 {
 
-    int[] arr;
+    int[] preSum;
+    Random random = new Random();
 
     public Solution528(int[] w) {
-        int len = 0;
-        for (int i : w) {
-            len += i;
-        }
-        arr = new int[len];
-        int index = 0;
+        preSum = new int[w.length+1];
+
+        preSum[0] = 0;
+
         for (int i = 0; i < w.length; i++) {
-            for (int j = 0; j < w[i]; j++) {
-                arr[index++] = i;
-            }
+            preSum[i+1] = preSum[i] + w[i];
         }
+
     }
 
     public int pickIndex() {
-        Random random = new Random();
-        int index = random.nextInt(arr.length);
-        return arr[index];
+        int target = random.nextInt(preSum[preSum.length-1]);
+
+        int left = 1;
+        int right = preSum.length-1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (target < preSum[mid]) {
+                right = mid - 1;
+            } else if (target >= preSum[mid]) {
+                left = mid + 1;
+            }
+        }
+
+        return right;
     }
 }
 
